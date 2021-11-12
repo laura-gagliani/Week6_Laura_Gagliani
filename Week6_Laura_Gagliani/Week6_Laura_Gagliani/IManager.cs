@@ -16,7 +16,10 @@ namespace Week6_Laura_Gagliani
 
         public bool Add(T item);
 
+
         public bool CheckDuplicates(T item);
+
+        public List<string> GetAreas();
 
     }
 }

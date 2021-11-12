@@ -8,8 +8,8 @@ namespace Week6_Laura_Gagliani
 {
     class Menu
     {
-        //static DbManager db = new DbManager();
-        static MockManager db = new MockManager();
+        static DbManager db = new DbManager();
+        //static MockManager db = new MockManager();
 
         internal static void Start()
         {
@@ -114,7 +114,8 @@ namespace Week6_Laura_Gagliani
 
         private static void StampaPerArea()
         {
-            Console.WriteLine("\nInserisci area geografica desiderata (Centro / Novoli / Rifredi):");
+            StampaAreeGeografiche();
+            Console.WriteLine("\nInserisci area geografica desiderata:");
             string areaCercata = Console.ReadLine();
             List<Agente> agentiPerArea = db.GetByAreaGeografica(areaCercata);
             if (agentiPerArea.Count == 0)
@@ -127,6 +128,16 @@ namespace Week6_Laura_Gagliani
                 Console.WriteLine("\n------------------------------------------------------");
                 StampaLista(agentiPerArea);
                 Console.WriteLine("------------------------------------------------------\n");
+            }
+        }
+
+        private static void StampaAreeGeografiche()
+        {
+            List<string> listaAree = db.GetAreas();
+            Console.WriteLine("\nLe aree geografiche attualmente in database sono:");
+            foreach (var item in listaAree)
+            {
+                Console.WriteLine($"- {item}");
             }
         }
 

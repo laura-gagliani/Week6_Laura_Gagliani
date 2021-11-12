@@ -88,6 +88,44 @@ namespace Week6_Laura_Gagliani
             }
         }
 
+        public List<string> GetAreas()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from Agente";
+
+                SqlDataReader reader = command.ExecuteReader();
+                List<string> listaAree = new List<string>();
+
+                while (reader.Read())
+                {
+                    bool isDuplicate = false;
+                    string area = (string)reader["AreaGeografica"];
+
+                    foreach (string s in listaAree)
+                    {
+                        if( area == s)
+                        {
+                            isDuplicate = true;
+                        }
+                    }
+
+                    if (!isDuplicate)
+                    {
+                        listaAree.Add(area);
+                    }
+
+                }
+
+                connection.Close();
+                return listaAree;
+            }
+        }
+
         public List<Agente> GetByAnniServizioMinimi(int anniMin)
         {
 

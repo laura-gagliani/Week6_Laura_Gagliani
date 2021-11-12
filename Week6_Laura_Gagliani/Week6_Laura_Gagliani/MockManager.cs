@@ -44,6 +44,31 @@ namespace Week6_Laura_Gagliani
             return mockDb;
         }
 
+        public List<string> GetAreas()
+        {
+            List<string> listaAree = new List<string>();
+
+            foreach (Agente a in mockDb)
+            {
+                bool isDuplicate = false;
+
+                foreach (string s in listaAree)
+                {
+                    if (a.AreaGeografica == s)
+                    {
+                        isDuplicate = true;
+                    }
+                }
+
+                if (!isDuplicate)
+                {
+                    listaAree.Add(a.AreaGeografica);
+                }
+            }
+
+            return listaAree;
+        }
+
         public List<Agente> GetByAnniServizioMinimi(int anniMin)
         {
             List<Agente> sottolista = new List<Agente>();
@@ -55,7 +80,7 @@ namespace Week6_Laura_Gagliani
                 }
             }
 
-             return sottolista;
+            return sottolista;
         }
 
         public List<Agente> GetByAreaGeografica(string area)
