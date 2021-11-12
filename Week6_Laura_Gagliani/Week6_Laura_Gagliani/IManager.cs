@@ -16,6 +16,7 @@ namespace Week6_Laura_Gagliani
 
         public bool Add(T item);
 
-        public T GetByCodiceFiscale(string codFiscale);
+        public bool CheckDuplicates(T item);
+
     }
 }

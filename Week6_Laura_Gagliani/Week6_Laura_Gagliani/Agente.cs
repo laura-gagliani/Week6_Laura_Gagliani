@@ -37,5 +37,16 @@ namespace Week6_Laura_Gagliani
             else return false;
         }
 
+        public override string ToString()
+        {
+            return $"CF: {CodiceFiscale} - Nome: {Nome} – Cognome: {Cognome} – Anni di Servizio: {GetAnniServizio()}";
+        }
+
+        private int GetAnniServizio()
+        {
+            int annoCorrente = DateTime.Today.Year;
+            return annoCorrente - AnnoInizio;
+        }
+
     }
 }

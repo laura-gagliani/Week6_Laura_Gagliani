@@ -71,25 +71,25 @@ namespace Week6_Laura_Gagliani
             int anniServizio = GetInt();
 
             Agente nuovoAgente = new Agente(nome, cognome, codiceFiscale, areaGeografica, anniServizio);
-            Agente agenteStessoCod = db.GetByCodiceFiscale(codiceFiscale);
-            
-            if (agenteStessoCod == null)
+            bool isDuplicate = db.CheckDuplicates(nuovoAgente);
+            if (!isDuplicate)
             {
                 bool isAdded = db.Add(nuovoAgente);
                 if (isAdded)
                 {
-                    Console.WriteLine("\nAgente inserito con successo nel database");
+                    Console.WriteLine("\nAgente inserito con successo nel database!");
                 }
                 else
                 {
-                    Console.WriteLine("\nAttenzione! Inserimento non riuscito");
+                    Console.WriteLine("\nErrore nell'inserimento :(");
                 }
             }
             else
             {
-                Console.WriteLine("\nErrore! Nel database è già presente un agente con lo stesso codice fiscale");
-                Console.WriteLine("Inserimento annullato");
+                Console.WriteLine("\nAttenzione! CF già presente in elenco. Procedura annullata.");
             }
+            
+                       
 
         }
 
