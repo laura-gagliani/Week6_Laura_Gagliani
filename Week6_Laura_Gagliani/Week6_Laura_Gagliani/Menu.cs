@@ -8,7 +8,8 @@ namespace Week6_Laura_Gagliani
 {
     class Menu
     {
-        static DbManager db = new DbManager();
+        //static DbManager db = new DbManager();
+        static MockManager db = new MockManager();
 
         internal static void Start()
         {
