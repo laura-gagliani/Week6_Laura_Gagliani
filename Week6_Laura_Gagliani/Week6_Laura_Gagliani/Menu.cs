@@ -65,7 +65,7 @@ namespace Week6_Laura_Gagliani
             Console.Write("\nCognome: ");
             string cognome = Console.ReadLine();
             Console.Write("\nCodice fiscale (8 caratteri): ");
-            string codiceFiscale = GetCorrectString();
+            string codiceFiscale = GetCorrectCF();
             Console.Write("\nArea geografica assegnata: ");
             string areaGeografica = Console.ReadLine();
             Console.Write("\nAnno di inizio attività: ");
@@ -188,7 +188,7 @@ namespace Week6_Laura_Gagliani
             }
         }
 
-        public static string GetCorrectString()
+        public static string GetCorrectCF()
         {
             string cf = Console.ReadLine();
 
