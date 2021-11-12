@@ -59,15 +59,15 @@ namespace Week6_Laura_Gagliani
         private static void InserisciNuovoAgente()
         {
             Console.WriteLine("------ INSERIMENTO DATI ------");
-            Console.Write("\nNome:");
+            Console.Write("\nNome: ");
             string nome = Console.ReadLine();
-            Console.Write("\nCognome:");
+            Console.Write("\nCognome: ");
             string cognome = Console.ReadLine();
-            Console.Write("\nCodice fiscale:"); 
-            string codiceFiscale = Console.ReadLine();
-            Console.Write("\nArea geografica assegnata:");
+            Console.Write("\nCodice fiscale (8 caratteri): ");
+            string codiceFiscale = GetCorrectString();
+            Console.Write("\nArea geografica assegnata: ");
             string areaGeografica = Console.ReadLine();
-            Console.Write("\nAnni di servizio:");
+            Console.Write("\nAnno di inizio attività: ");
             int anniServizio = GetInt();
 
             Agente nuovoAgente = new Agente(nome, cognome, codiceFiscale, areaGeografica, anniServizio);
@@ -86,7 +86,7 @@ namespace Week6_Laura_Gagliani
             }
             else
             {
-                Console.WriteLine("\nAttenzione! CF già presente in elenco. Procedura annullata.");
+                Console.WriteLine("\nAttenzione! CF già presente in elenco. Procedura di inserimento annullata.");
             }
             
                        
@@ -113,7 +113,7 @@ namespace Week6_Laura_Gagliani
 
         private static void StampaPerArea()
         {
-            Console.WriteLine("\nInserisci area geografica desiderata:");
+            Console.WriteLine("\nInserisci area geografica desiderata (Centro / Novoli / Rifredi):");
             string areaCercata = Console.ReadLine();
             List<Agente> agentiPerArea = db.GetByAreaGeografica(areaCercata);
             if (agentiPerArea.Count == 0)
@@ -174,6 +174,19 @@ namespace Week6_Laura_Gagliani
             {
                 Console.WriteLine(item.ToString());
             }
+        }
+
+        public static string GetCorrectString()
+        {
+            string cf = Console.ReadLine();
+
+            while(cf.Length != 8)
+            {
+                Console.WriteLine("\nErrore! Inserimento errato. Riprova:");
+                cf = Console.ReadLine();
+            }
+            return cf;
+            
         }
     }
 }

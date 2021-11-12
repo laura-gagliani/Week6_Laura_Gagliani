@@ -6,7 +6,6 @@ namespace Week6_Laura_Gagliani
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             /*
              * Domande Test
              * 
