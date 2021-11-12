@@ -12,7 +12,7 @@ namespace Week6_Laura_Gagliani
              * 
              * 1) a, e, g
              * 2) b, d
-             * 3) a, b, c ?????
+             * 3) a, b, c 
              * 
           */
             Menu.Start();
